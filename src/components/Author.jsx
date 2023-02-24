@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { getAuthorDetails } from '../API-adapter';
 
 const Author = () => {

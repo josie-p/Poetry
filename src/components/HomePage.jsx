@@ -1,6 +1,5 @@
 import React , { useState, useEffect } from "react";
-import { Link, Outlet } from 'react-router-dom'
-import { Navbar } from "./";
+import { Link, Outlet } from 'react-router-dom';
 import { getAuthors } from "../API-adapter";
 
 const HomePage = () => {
