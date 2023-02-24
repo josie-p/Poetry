@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getAuthorDetails } from '../API-adapter';
 
 const Author = () => {
     const { id } = useParams();
-    const [details, setDetails] = useState('');
+    const [details, setDetails] = useState([]);
 
     const authorDetailsMain = async () => {
         let response = await getAuthorDetails(id);
@@ -18,7 +18,19 @@ const Author = () => {
 
     return(
         <div>
-            <h1>hello from Author</h1>
+            <h1>{id}</h1>
+            {
+                details.map((detail, idx) => {
+                    return(
+                        <div key={`the key for this is ${idx}`}>
+                            <p>Line Count: {detail.linecount}</p>
+                            <p>Title: {detail.title}</p>
+                            <Link to={`/${detail.title}`}><button>See Poem</button></Link>
+                        </div>
+                    )
+                })
+            }
+
             <div>
                 
             </div>
