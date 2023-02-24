@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Main } from "./components";
+import { Main, Author } from "./components";
 
 import {
     createBrowserRouter,
@@ -13,7 +13,7 @@ import {
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={ <Main/> }>
-
+            <Route path=':id' element={<Author/>}/>
         </Route>
     )
 );

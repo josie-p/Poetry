@@ -1,6 +1,7 @@
 import React , { useState, useEffect } from "react";
+import { Link, Outlet } from 'react-router-dom'
 import { Navbar } from "./";
-import { getPoem } from "../API-adapter";
+import { getAuthors } from "../API-adapter";
 
 const Main = () => {
 
@@ -18,7 +19,7 @@ const Main = () => {
     }, [search])
 
 async function getPoemInMain(){
-    const response = await getPoem();
+    const response = await getAuthors();
 
     setAuthors(response.authors)
 
@@ -27,6 +28,7 @@ async function getPoemInMain(){
     return(
         <div id="main">
             <Navbar />
+            <Outlet/>
             <form>
                 <label>Search For Author:</label>
                 <input type='text' onInput={(event) => {
@@ -35,9 +37,9 @@ async function getPoemInMain(){
             </form>
             {
                 search.length ? filtered.map((author, idx) => {
-                    return(<p key={`this author is at index: ${idx}`}>{author}</p>)
+                    return(<div key={`this author is at index: ${idx}`}><Link to={`/${author}`}>{author}</Link></div>)
                 }) : authors.map((author, idx) => {
-                    return(<p key={`this author is at index: ${idx}`}>{author}</p>)
+                    return(<div key={`this author is at index: ${idx}`}><Link to={`/${author}`}>{author}</Link></div>)
                 })
 
 }
